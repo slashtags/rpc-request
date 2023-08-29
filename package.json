@@ -1,0 +1,29 @@
+{
+  "name": "slashtags-request",
+  "version": "1.0.0",
+  "description": "slashtags request for rpc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slashtags/rpc-request.git"
+  },
+  "keywords": [
+    "slashtags",
+    "rpc"
+  ],
+  "author": "dzdidi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/slashtags/rpc-request/issues"
+  },
+  "homepage": "https://github.com/slashtags/rpc-request#readme",
+  "dependencies": {
+    "@synonymdev/slashtags-url": "^1.0.0-alpha.4",
+    "node-fetch": "^2.7.0",
+    "noise-curve-ed": "^2.0.1",
+    "noise-handshake": "^3.0.3"
+  }
+}
