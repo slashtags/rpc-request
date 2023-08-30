@@ -8,7 +8,6 @@ const edCurve = require('noise-curve-ed')
  * @param {string} url
  * @param {object} params
  * @param {object} keypair
- * @param {string} serverPublicKey
  * @param {object} [headers]
  * @param {object} [curve]
  * @param {object} [prologue]
@@ -19,7 +18,6 @@ async function sendRequest ({
   url,
   params,
   keypair,
-  serverPublicKey,
   headers = { 'Content-Type': 'application/json'},
   curve = edCurve,
   prologue = Buffer.alloc(0)
@@ -27,7 +25,7 @@ async function sendRequest ({
   const initiator = new Noise('IK', true, keypair, { curve })
   const parsed = SlashtagsURL.parse(url)
 
-  initiator.initialise(prologue, serverPublicKey)
+  initiator.initialise(prologue, parsed.key)
   const payload = initiator.send(Buffer.from(JSON.stringify(params))).toString('hex')
 
   const res = await fetch(parsed.query.relay + parsed.path, {
