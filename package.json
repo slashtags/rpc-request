@@ -1,5 +1,5 @@
 {
-  "name": "slashtags-request",
+  "name": "@slashtagsdev/slashtags-request",
   "version": "1.0.0",
   "description": "slashtags request for rpc",
   "main": "index.js",
