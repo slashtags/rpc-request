@@ -21,15 +21,16 @@
   },
   "browser": {
     "./index.js": "./index.js",
-    "./fetch.js": "./fetch/fetch-browser.js",
+    "./fetch/fetch.js": "./fetch/fetch-browser.js"
   },
   "react-native": {
     "./index.js": "./index.js",
-    "./fetch.js": "./fetch/fetch-browser.js",
+    "./fetch/fetch.js": "./fetch/fetch-browser.js"
   },
   "homepage": "https://github.com/slashtags/rpc-request#readme",
   "dependencies": {
     "@synonymdev/slashtags-url": "^1.0.0-alpha.4",
+    "b4a": "^1.6.4",
     "node-fetch": "^2.7.0",
     "noise-curve-ed": "^2.0.1",
     "noise-handshake": "^3.0.3"
