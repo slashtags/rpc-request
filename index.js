@@ -1,7 +1,10 @@
 const SlashtagsURL = require('@synonymdev/slashtags-url')
 const Noise = require('noise-handshake')
 const edCurve = require('noise-curve-ed')
-const fetch = require('node-fetch')
+const b4a = require('b4a')
+
+const fetch = require('./fetch/fetch.js')
+const TextDecoder = require('./textdecoder/textdecoder.js')
 
 /**
  * Send request to server
@@ -21,13 +24,14 @@ async function sendRequest ({
   keypair,
   headers = { 'Content-Type': 'application/json'},
   curve = edCurve,
-  prologue = Buffer.alloc(0)
+  prologue = b4a.alloc(0)
 }) {
   const initiator = new Noise('IK', true, keypair, { curve })
   const parsed = SlashtagsURL.parse(url)
 
   initiator.initialise(prologue, parsed.key)
-  const payload = initiator.send(Buffer.from(JSON.stringify(params))).toString('hex')
+  const buffer = initiator.send(b4a.from(JSON.stringify(params)))
+  const payload = b4a.toString(buffer, 'hex');
 
   const res = await fetch(parsed.query.relay + parsed.path, {
     headers,
@@ -39,9 +43,15 @@ async function sendRequest ({
   if (body.error) throw new Error(body.error.message)
   if (!body.result) throw new Error('No result in response')
 
-  return JSON.parse(initiator.recv(Buffer.from(body.result, 'hex')).toString())
-}
+  const result = b4a.from(body.result, 'hex');
 
+  const payloadEncrypted = initiator.recv(result);
+
+  const decoder = new TextDecoder();
+  const decoded = decoder.decode(payloadEncrypted);
+
+  return JSON.parse(decoded)
+}
 module.exports = {
   sendRequest
 }
