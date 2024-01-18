@@ -1,9 +1,10 @@
 const SlashtagsURL = require('@synonymdev/slashtags-url')
 const Noise = require('noise-handshake')
 const edCurve = require('noise-curve-ed')
-const fetch = require('./fetch/fetch.js')
 const b4a = require('b4a')
-const { TextDecoder } = require('util')
+
+const fetch = require('./fetch/fetch.js')
+const TextDecoder = require('./textdecoder/textdecoder.js')
 
 /**
  * Send request to server
