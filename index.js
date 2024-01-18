@@ -1,7 +1,7 @@
 const SlashtagsURL = require('@synonymdev/slashtags-url')
 const Noise = require('noise-handshake')
 const edCurve = require('noise-curve-ed')
-const fetch = require('node-fetch')
+const fetch = require('./fetch/fetch.js')
 
 /**
  * Send request to server

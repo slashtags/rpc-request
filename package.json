@@ -19,6 +19,14 @@
   "bugs": {
     "url": "https://github.com/slashtags/rpc-request/issues"
   },
+  "browser": {
+    "./index.js": "./index.js",
+    "./fetch.js": "./fetch/fetch-browser.js",
+  },
+  "react-native": {
+    "./index.js": "./index.js",
+    "./fetch.js": "./fetch/fetch-browser.js",
+  },
   "homepage": "https://github.com/slashtags/rpc-request#readme",
   "dependencies": {
     "@synonymdev/slashtags-url": "^1.0.0-alpha.4",
