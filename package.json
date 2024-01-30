@@ -20,12 +20,10 @@
     "url": "https://github.com/slashtags/rpc-request/issues"
   },
   "browser": {
-    "./fetch/fetch.js": "./fetch/fetch-browser.js",
-    "./textdecoder/textdecoder.js": "./textdecoder/textdecoder-browser.js"
+    "./fetch/fetch.js": "./fetch/fetch-browser.js"
   },
   "react-native": {
-    "./fetch/fetch.js": "./fetch/fetch-browser.js",
-    "./textdecoder/textdecoder.js": "./textdecoder/textdecoder-browser.js"
+    "./fetch/fetch.js": "./fetch/fetch-browser.js"
   },
   "homepage": "https://github.com/slashtags/rpc-request#readme",
   "dependencies": {
