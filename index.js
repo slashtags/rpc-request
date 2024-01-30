@@ -4,7 +4,6 @@ const edCurve = require('noise-curve-ed')
 const b4a = require('b4a')
 
 const fetch = require('./fetch/fetch.js')
-const TextDecoder = require('./textdecoder/textdecoder.js')
 
 /**
  * Send request to server
@@ -44,14 +43,12 @@ async function sendRequest ({
   if (!body.result) throw new Error('No result in response')
 
   const result = b4a.from(body.result, 'hex');
-
   const payloadEncrypted = initiator.recv(result);
-
-  const decoder = new TextDecoder();
-  const decoded = decoder.decode(payloadEncrypted);
+  const decoded = b4a.toString(payloadEncrypted);
 
   return JSON.parse(decoded)
 }
+
 module.exports = {
   sendRequest
 }
